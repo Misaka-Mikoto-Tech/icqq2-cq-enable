@@ -12,6 +12,7 @@
     "incremental": false,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
+    "sourceMap": true,
     "paths": {
       "@/*": ["src/*"]
     },

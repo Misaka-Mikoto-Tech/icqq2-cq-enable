@@ -12,15 +12,15 @@ const mCQInside = {
     "[": "&#91;",
     "]": "&#93;",
 };
-export function toCqcode(msg:any) {
+export function toCqcode(msg:any) { // 这个函数仅用来显示和存储到数据库存档，因此reply id 用seq显示一下就行了
     const isQuote = !!msg?.source?.message;
     let cqcode = "";
 
     if (true === isQuote) {
         const quote = { ...msg.source, flag: 1 };
-        const mid = genDmMessageId(quote.user_id, quote.seq, quote.rand, quote.time, quote.flag);
+        // const mid = genDmMessageId(quote.user_id, quote.seq, quote.rand, quote.time, quote.flag);
 
-        cqcode += `[CQ:reply,id=${mid}]`;
+        cqcode += `[CQ:reply,id=${quote.seq}]`;
     }
     msg.message=[].concat(msg.message);
     (msg.message || []).forEach((c) => {
